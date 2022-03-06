@@ -3,6 +3,7 @@ package com.abdell.employees.dto;
 public class EmployeeDto {
     
     private String name;
+    private String email;
     private String phone;
 
 
@@ -11,8 +12,9 @@ public class EmployeeDto {
 
 
     
-    public EmployeeDto(String name, String phone){
+    public EmployeeDto(String name, String email, String phone){
         this.name = name;
+        this.email = email;
         this.phone = phone;
     }
 
@@ -40,4 +42,10 @@ public class EmployeeDto {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

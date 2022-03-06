@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,6 +62,16 @@ public class EmployeeController {
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody EmployeeDto employeeDto){
+        
+        Employee employee = employeeService.get(id).get();
+        employee.setName(employeeDto.getName());
+        employee.setEmail(employeeDto.getEmail());
+        employee.setPhone(employeeDto.getPhone());
+        employeeService.store(employee);
+        return new ResponseEntity(new Message("The employee has been updated successfully"), HttpStatus.OK);
+    }
 
 
     

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
+  action:string = "edit";
+
   constructor() { }
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@ package com.abdell.employees.controller;
 
 import java.util.List;
 
+import com.abdell.employees.dto.Message;
 import com.abdell.employees.entity.Employee;
 import com.abdell.employees.service.EmployeeService;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +40,13 @@ public class EmployeeController {
 
         Employee Employee = employeeService.get(id).get();
         return new ResponseEntity(Employee, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
+        employeeService.delete(id);
+        return new ResponseEntity(new Message("The employee has been deleted successfully"), HttpStatus.OK);
     }
 
 
